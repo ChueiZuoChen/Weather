@@ -17,9 +17,7 @@ const val API_KEY = "e4e4107b657a4a959f8133513190807"
 interface WeatherAPIService {
 
     @GET("current.json")
-    fun getCurrentWeather(
-        @Query("q") location: String
-    ): Call<Weather>
+    fun getCurrentWeather(@Query("q") location: String): Deferred<Weather>
 
     companion object {
         operator fun invoke(): WeatherAPIService {

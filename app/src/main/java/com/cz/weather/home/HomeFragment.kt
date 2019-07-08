@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.cz.weather.R
 import com.cz.weather.data.WeatherAPIService
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -31,13 +32,13 @@ class HomeFragment : Fragment(){
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
         // TODO: Use the ViewModel
         val apiService = WeatherAPIService()
 
         GlobalScope.launch(Dispatchers.Main){
-            val current = apiService.getCurrentWeather("Perth").await()
-            textView.text = current.current.toString()
-
+            val current = apiService.getCurrentWeather("Geraldton").await()
+            textView.text = current.toString()
         }
 
     }
