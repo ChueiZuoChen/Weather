@@ -20,35 +20,14 @@ interface WeatherAPIService {
     fun getCurrentWeather(@Query("q") location: String): Call<Weather>
 
     companion object {
-        operator fun invoke(): WeatherAPIService {
+
+        operator fun invoke():WeatherAPIService{
             return Retrofit.Builder()
                 .baseUrl("http://api.apixu.com/v1/")
-                //.addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
                 .create(WeatherAPIService::class.java)
-//            val requInterceptor = Interceptor { chain ->
-//                val url = chain.request()
-//                    .url()
-//                    .newBuilder()
-//                    .addQueryParameter("key", API_KEY)
-//                    .build()
-//                val request = chain.request()
-//                    .newBuilder()
-//                    .url(url)
-//                    .build()
-//                return@Interceptor chain.proceed(request)
-//            }
-//            val okHttpClient = OkHttpClient.Builder()
-//                .addInterceptor(requInterceptor)
-//                .build()
-//            return Retrofit.Builder()
-//                .client(okHttpClient)
-//                .baseUrl("http://api.apixu.com/v1/")
-//                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build()
-//                .create(WeatherAPIService::class.java)
         }
     }
 }

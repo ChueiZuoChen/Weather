@@ -23,6 +23,15 @@ android {
     dataBinding{
         enabled=true
     }
+    kotlin {
+        experimental {
+            coroutines "enable"
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {

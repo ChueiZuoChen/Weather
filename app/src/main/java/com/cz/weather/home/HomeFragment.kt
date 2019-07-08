@@ -38,16 +38,10 @@ class HomeFragment : Fragment(),AnkoLogger{
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         // TODO: Use the ViewModel
-        val apiService = WeatherAPIService()
-
-//        GlobalScope.launch(Dispatchers.Main){
-//
-//            val current = apiService.getCurrentWeather("Perth").await()
-//            textView.text = current.toString()
-//        }
+        val apiService = WeatherAPIService().getCurrentWeather("perth")
 
         doAsync {
-            var current= apiService.getCurrentWeather("Perth").execute().body()
+            val current= apiService.execute().body()
             uiThread {
                 textView.text = current!!.toString()
             }
