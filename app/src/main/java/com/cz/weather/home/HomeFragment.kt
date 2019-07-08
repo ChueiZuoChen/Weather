@@ -14,10 +14,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import retrofit2.await
 
 
-class HomeFragment : Fragment(){
+class HomeFragment : Fragment(),AnkoLogger{
+
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -36,9 +40,17 @@ class HomeFragment : Fragment(){
         // TODO: Use the ViewModel
         val apiService = WeatherAPIService()
 
-        GlobalScope.launch(Dispatchers.Main){
-            val current = apiService.getCurrentWeather("Geraldton").await()
-            textView.text = current.toString()
+//        GlobalScope.launch(Dispatchers.Main){
+//
+//            val current = apiService.getCurrentWeather("Perth").await()
+//            textView.text = current.toString()
+//        }
+
+        doAsync {
+            var current= apiService.getCurrentWeather("Perth").execute().body()
+            uiThread {
+                textView.text = current!!.toString()
+            }
         }
 
     }
