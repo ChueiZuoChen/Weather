@@ -1,4 +1,4 @@
-package com.cz.weather
+package com.cz.weather.settings
 
 import androidx.lifecycle.ViewModel;
 

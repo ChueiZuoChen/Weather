@@ -4,10 +4,10 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation"
             app:startDestination="@id/menu_today">
 
-    <fragment android:id="@+id/menu_today" android:name="com.cz.weather.HomeFragment" android:label="home_fragment"
+    <fragment android:id="@+id/menu_today" android:name="com.cz.weather.home.HomeFragment" android:label="home_fragment"
               tools:layout="@layout/home_fragment"/>
-    <fragment android:id="@+id/menu_future" android:name="com.cz.weather.SevenDaysFragment"
+    <fragment android:id="@+id/menu_future" android:name="com.cz.weather.future.SevenDaysFragment"
               android:label="seven_days_fragment" tools:layout="@layout/seven_days_fragment"/>
-    <fragment android:id="@+id/menu_settings" android:name="com.cz.weather.SettingFragment"
+    <fragment android:id="@+id/menu_settings" android:name="com.cz.weather.settings.SettingFragment"
               android:label="setting_fragment" tools:layout="@layout/setting_fragment"/>
 </navigation>
