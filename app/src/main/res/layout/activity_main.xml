@@ -13,8 +13,7 @@
             android:id="@+id/myNavHost"
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/navigation"
-    />
+            app:navGraph="@navigation/navigation"/>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,8 +23,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/bottom_nav"
-            app:menu="@menu/menu_toolbar"
-
-    />
+            app:menu="@menu/menu_toolbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
